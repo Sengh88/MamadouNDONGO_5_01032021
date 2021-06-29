@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+
+  <!-- Box icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="style.css" />
+  <title>Your Cart</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="navigation container">
+      <div class="logo">
+        <h1><a href="index.html"><img src="images/logo.png" width="150px" alt=""></a></h1>
+      </div>
+
+      <div class="menu">
+        <div class="top-nav">
+          <div class="logo">
+            <h1>Orinoco Cameras</h1>
+          </div>
+          <div class="close">
+            <i class="bx bx-x"></i>
+          </div>
+        </div>
+
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a href="product-details.html" class="nav-link">Produits</a>
+          </li>
+          <li class="nav-item">
+            <a href="panier.html" class="nav-link">Panier</a><span class="counter">0</span>
+          </li>
+          <li class="nav-item">
+            <a href="commande.html" class="nav-link">Commande</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="panier.html" class="nav-link icon"><i class="bx bx-shopping-bag"></i></a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="panier.html" class="cart-icon">
+        <i class="bx bx-shopping-bag"></i>
+      </a>
+
+      <div class="hamburger">
+        <i class="bx bx-menu"></i>
+      </div>
+    </div>
+  </nav>
+
+  
+  <!-- Cart Items -->
+  <main class="main">
+    <table  class="table table-hover">
+        <thead>
+            <tr>
+                <th> Produit </th>
+                <th> Option </th>
+                <th> Quantité </th>
+                <th> Prix </th>
+                <th> Total </th>
+                <th>...</th>
+            </tr>
+        </thead>
+        <tbody id='tab'>
+            <tr id ="panier"> </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-center" colspan="4"> Total </td>
+                <td id="Total"> 0.00 €</td>
+            </tr>
+        </tfoot>
+
+    </table>
+    <div id="container">
+        <form name="CommandForm" id="CommandForm" onsubmit="Valid(); return false">
+            <fieldset>
+        <div class="form-group">
+            <input name="nom" type="text" id="nom" placeholder="Nom" pattern="[a-zA-Z]{1,20}"/>
+            <input type="text" name="prenom" id="prenom" placeholder="Prenom" pattern="[a-zA-Z]{1,20}" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="adressem" id="adressem" placeholder="Adresse Mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+        </div>
+        <div class="form-group">
+            <input type="text" name="adresse" id="adresse"  placeholder="Adresse"  pattern="[a-zA-Z0-9 ]{1,100}"/>
+            <input type="text" name="ville" id="ville" placeholder="Ville"  pattern="[a-zA-Z]{1,10}" />
+            <input type="text" name="codePostal" id="codePostal" placeholder="Code Postal" />
+        </div>
+        <div class="form-group">
+            <button type="submit" id="ValidCommand">Commander</button>
+        </div>
+    </fieldset>
+    </form>
+    </div>
+</main>
+ 
+<!-- Page wrapper -->
+
+
+  <!-- Footer -->
+  <footer id="footer" class="section footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-center">
+          <h3>TELECHARGEZ NOTRE <br> APPLICATION</h3>
+            <img src="images/android.png" width="100px">
+            <img src="images/app.png" width="100px">
+        </div>
+        <div class="footer-center">
+          <h3>INFORMATION</h3>
+          <a href="#">A propos</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Termes & Conditions</a>
+          <a href="#">Contact</a>
+          <a href="#">Site Map</a>
+        </div>
+        <div class="footer-center">
+          <h3>Mon compte</h3>
+          <a href="#">Mon compte</a>
+          <a href="#">Historique de commandes</a>
+          <a href="#">Mes préférences</a>
+          <a href="#">Newsletter</a>
+          <a href="#">Nous retourner un produit</a>
+        </div>
+        <div class="footer-center">
+          <h3>CONTACTEZ-NOUS</h3>
+          <div>
+            <span>
+              <i class="fas fa-map-marker-alt"></i>
+            </span>
+           123 rue du commerce
+          </div>
+          <div>
+            <span>
+              <i class="far fa-envelope"></i>
+            </span>
+            orinoco@orinoco.com
+          </div>
+          <div>
+            <span>
+              <i class="fas fa-phone"></i>
+            </span>
+            01.01.01.01.01
+          </div>
+          <div>
+            <span>
+              <i class="far fa-paper-plane"></i>
+            </span>
+            75000 Paris, FRANCE
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <!-- Custom Script -->
+  <script src="js/panier.js"></script>
+</body>
+
+</html>

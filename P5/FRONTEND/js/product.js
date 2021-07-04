@@ -57,7 +57,6 @@ function addProduct (data) {
     id: data._id,
     imageUrl: data.imageUrl,
     name: data.name,
-    lenses: data.lenses,
     price: data.price,
     description: data.description,
     quantity: 1,

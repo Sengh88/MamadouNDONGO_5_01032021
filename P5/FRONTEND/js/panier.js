@@ -24,12 +24,9 @@ else {
         tr.appendChild($th0);
         console.log($th0);
         console.log(tr)
-        // affichage du choix dans le panier
-        const $th1 = document.createElement("th");
-        $th1.innerHTML = objJson[i].choix; 
-        tr.appendChild($th1);
+        
         //affichage de la quantité et modification de la quantité
-        const $th2 = document.createElement("th");
+        const $th1 = document.createElement("th");
         const $input = document.createElement("input");
         $input.type = "number";
         $input.defaultValue = objJson[i].quantity; 
@@ -38,17 +35,17 @@ else {
         $input.addEventListener("change", function() {
             AjoutProduit(index, this.value);
         });
-        $th2.appendChild($input);
-        tr.appendChild($th2); 
+        $th1.appendChild($input);
+        tr.appendChild($th1); 
         //affichage du prix unitaire 
-        const $th3 = document.createElement("th"); 
-        $th3.innerHTML = objJson[i].prix;
-        tr.appendChild($th3);
+        const $th2 = document.createElement("th"); 
+        $th2.innerHTML = objJson[i].price/100;
+        tr.appendChild($th2);
         // Affichage du prix total. 
-        const $th5 = document.createElement("th");
-        $th5.id = `priceTotal-${i}`;
-        $th5.innerHTML = `${objJson[i].priceTotal} €`;
-        tr.appendChild($th5);
+        const $th3 = document.createElement("th");
+        $th3.innerHTML = objJson[i].priceTotal
+       
+        tr.appendChild($th3);
     
         const $thS = document.createElement("th"); 
         const $button = document.createElement("button");
@@ -127,14 +124,14 @@ function AjoutProduit(index, valueQ) {
     objJson[index].priceTotal = objJson[index].quantity*objJson[index].prix;
     console.log(objJson[index].quantity, objJson[index].prix)
     document.getElementById(`priceTotal-${index}`).innerHTML = `${objJson[index].priceTotal} € `;
-    localStorage.setItem("cart", JSON.stringify(objJson));
+    localStorage.setItem("products", JSON.stringify(objJson));
     CalculTotal();
 
 }
 
 function deleteItem (index) {
     delete objJson.splice(index, 1); 
-    localStorage.setItem("cart", JSON.stringify(objJson)); 
+    localStorage.setItem("products", JSON.stringify(objJson)); 
     location.reload();
 }
 

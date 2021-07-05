@@ -1,52 +1,66 @@
-/* ****************GETTING AND PARSING LOCALSTORAGE INFO***************** */
+const order = JSON.parse(localStorage.getItem("order"));
 
-//contact object
-let contactObj = JSON.parse(localStorage.getItem("contactObject"));
+const outerLoader = document.querySelector(".loader__outer");
 
-//array of camera objects
-let camArray = JSON.parse(localStorage.getItem("camArray"));
+const recapBtn = document.querySelector(".recap");
+const { products } = order;
+const title = order.products.length == 1 ? "VOTRE COMMANDE" : "VOS COMMANDES";
 
-/* ***************CREATING FINAL OBJECT TO POST TO BACKEND**************** */
-let finalObj = {};
-//storing contact info object inside the final object
-finalObj.contact = contactObj;
+const rendeOrder = document.querySelector(".render__order");
+const orderId = document.querySelector(".order-id");
 
-//creating an array of camera ids
-let camIdArray = (function createCamIdArr() {
-  let array = [];
-  for (i = 0; i < camArray.length; i++) {
-    array.push(camArray[i].cam_id);
-  }
-  return array;
-})();
+outerLoader.style.visibility = "visible";
+// injection HTML
+orderId.innerHTML = `NUMERO DE COMMANDE : ${order.orderId}`;
+outerLoader.remove();
+products.forEach((arg) => {
+  rendeOrder.innerHTML += `
+    <article class="order__article">
+    <h3>${arg.name}</h3>
+    <p class=" id" >Identifiant du produit : ${arg._id}</p>
+    <p class="price">prix du  produit : <span>$${arg.price / 100}</span></p>
+    </article>`;
+});
 
-//storing camera id array inside the final object
-finalObj.products = camIdArray;
+// end injection HTML
 
-/* *****************POSTING FINAL OBJECT****************** */
-camerasUrl = `http://localhost:3000/api/cameras/order`;
-
-var xhr = new XMLHttpRequest();
-
-xhr.open("POST", camerasUrl, true);
-
-xhr.onload = function () {
-  if (this.status == 201) {
-    var order = JSON.parse(this.responseText);
-    let successMsg = document.querySelector(".success-message");
-    successMsg.textContent =
-      "Merci pour votre achat  " +
-      order.contact.firstName +
-      " " +
-      order.contact.lastName +
-      ". Votre numéro de commande est le suivant: " +
-      order.orderId +
-      ".";
-  } else {
-  }
-};
-
-xhr.setRequestHeader("Content-type", "application/json");
-xhr.send(JSON.stringify(finalObj));
-
-localStorage.clear();
+/* GENERE PDF RECAPITULATIF
+const { firstName, lastName, address, city, email } = order.contact;
+function recapitulatifPDF() {
+  const pdfDoc = new jsPDF();
+  pdfDoc.setFillColor("black");
+  pdfDoc.setTextColor("#000");
+  pdfDoc.setFontSize(17);
+  pdfDoc.setFont("Roboto");
+  pdfDoc.text("RECAPITULATIF D'ACHAT", 65, 20);
+  pdfDoc.text(`NUMERO DE COMMANDE : ${order.orderId}`, 15, 35);
+  pdfDoc.text(
+    "----------------------------------------------------------------------------------------------------------",
+    0,
+    50
+  );
+  pdfDoc.text(`PRENOM : ${firstName.toUpperCase()}`, 20, 65);
+  pdfDoc.text(`NOM : ${lastName.toUpperCase()}`, 20, 80);
+  pdfDoc.text(`ADRESSE : ${address}`, 20, 95);
+  pdfDoc.text(`VILLE : ${city}`, 20, 105);
+  pdfDoc.text(`EMAIL : ${email}`, 20, 120);
+  pdfDoc.text(
+    "-----------------------------------------------------------------------------------------------------------",
+    0,
+    135
+  );
+  pdfDoc.setFontSize(16);
+  pdfDoc.text(
+    `MERCI D'AVOIR COMMANDER CHEZ ORINOCO ${firstName.toUpperCase()} ${lastName.toUpperCase()}\n`,
+    10,
+    150
+  );
+  pdfDoc.setFontSize(14);
+  pdfDoc.text("Orinoco boutique en ligne", 20, 200);
+  pdfDoc.text("Adresse : 50 rue du bidule PARIS 75011", 20, 210);
+  pdfDoc.text("Email : orinoco@bidule.com", 20, 220);
+  pdfDoc.setCreationDate();
+  pdfDoc.save("recapitulatif_achat.pdf");
+}
+recapBtn.addEventListener("click", recapitulatifPDF);
+*/

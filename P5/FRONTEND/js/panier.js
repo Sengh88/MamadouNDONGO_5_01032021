@@ -43,13 +43,13 @@ else {
         tr.appendChild($th2);
         // Affichage du prix total. 
         const $th3 = document.createElement("th");
-        $th3.innerHTML = objJson[i].priceTotal
-       
+        $th3.id = `priceTotal-${i}`;
+        $th3.innerHTML = `${objJson[i].priceTotal} €`;
         tr.appendChild($th3);
     
         const $thS = document.createElement("th"); 
         const $button = document.createElement("button");
-        $button.innerHTML = `<i class="far fa-trash-alt"></i>` 
+        $button.innerHTML = `Supprimer l'article` 
         $button.classList = "btn btn-outline-danger";
         $button.addEventListener("click", function() {
             deleteItem(index);
@@ -91,7 +91,7 @@ function Valid () {
             alert(`Votre commande numéro ${res.orderId} à bien été passée.`)
             localStorage.setItem("orderId", res.orderId)
             localStorage.setItem("firstName", res.contact.firstName)
-            window.location = `confirmation.html`
+            window.location = `commande.html`
           } else {
             alert(`Erreur de commande`);
           }
@@ -100,7 +100,7 @@ function Valid () {
   }
     else {
         console.log("ho");
-        alert("Veuilliez remplir le formulaire");
+        alert("Veuillez remplir le formulaire");
     }
 }
 
@@ -121,8 +121,8 @@ function CalculTotal() {
 function AjoutProduit(index, valueQ) {
     console.log(index);
     objJson[index].quantity = valueQ;
-    objJson[index].priceTotal = objJson[index].quantity*objJson[index].prix;
-    console.log(objJson[index].quantity, objJson[index].prix)
+    objJson[index].priceTotal = objJson[index].quantity*objJson[index].price;
+    console.log(objJson[index].quantity, objJson[index].price)
     document.getElementById(`priceTotal-${index}`).innerHTML = `${objJson[index].priceTotal} € `;
     localStorage.setItem("products", JSON.stringify(objJson));
     CalculTotal();

@@ -4,6 +4,7 @@ const outerLoader = document.querySelector(".loader__outer");
 
 const recapBtn = document.querySelector(".recap");
 const { products } = order;
+
 const title = order.products.length == 1 ? "VOTRE COMMANDE" : "VOS COMMANDES";
 
 const rendeOrder = document.querySelector(".render__order");

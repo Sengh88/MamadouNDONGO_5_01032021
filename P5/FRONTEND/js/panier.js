@@ -72,7 +72,8 @@ function Valid () {
             address: document.getElementById("adresse").value, 
             city: document.getElementById("ville").value
         };
-        const products = objJson.map(function(camera){return camera._id})
+        const products = objJson.map(function(camera){return camera.id})
+        console.log(products);
         const command = {contact, products};
         console.log(command);
         const options = {

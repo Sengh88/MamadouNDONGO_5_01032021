@@ -12,7 +12,7 @@ outerLoader.style.visibility = "visible"
 const fetchOne = async () => {
   const _id = new URLSearchParams(window.location.search).get('id') 
   const url = `http://localhost:3000/api/cameras/${_id}`
-  console.log(url);
+  
   try{
       const data = await fetch(url)
       const response = await data.json()

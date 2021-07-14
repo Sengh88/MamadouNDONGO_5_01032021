@@ -73,7 +73,7 @@ fetch("http://localhost:3000/api/cameras")
   .then(function (data) {
     const products = document.getElementById("products");
     for (photo of data) {
-      console.log(photo);
+      
       products.innerHTML += `
     <div class="product">
           <div class="product-header">

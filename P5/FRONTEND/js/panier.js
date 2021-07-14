@@ -1,7 +1,7 @@
 let objet = localStorage.getItem("products")
 
 let objJson = JSON.parse(objet)
-console.log(objJson);
+
 
 if (objet == '{}' || objet == null || objet == "[]" ) {
 let message = 
@@ -14,7 +14,7 @@ else {
     
     const tableau = document.getElementById("tab");
     for(let i = 0; i < objJson.length; i++) {
-        console.log(objJson[i].name);
+        
         const tr = document.createElement("tr");
 
         
@@ -22,8 +22,7 @@ else {
         const $th0 = document.createElement("th");
         $th0.innerHTML = objJson[i].name;
         tr.appendChild($th0);
-        console.log($th0);
-        console.log(tr)
+        
         
         //affichage de la quantité et modification de la quantité
         const $th1 = document.createElement("th");
@@ -64,7 +63,7 @@ else {
 }
 function Valid () {
     if(document.forms.CommandForm != "") {
-        console.log("hy"); 
+       
         const contact = {
             firstName: document.getElementById("nom").value, 
             lastName: document.getElementById("prenom").value,
@@ -73,9 +72,9 @@ function Valid () {
             city: document.getElementById("ville").value
         };
         const products = objJson.map(function(camera){return camera.id})
-        console.log(products);
+        
         const command = {contact, products};
-        console.log(command);
+        
         const options = {
           method: "POST",
           body: JSON.stringify(command),
@@ -85,7 +84,7 @@ function Valid () {
         };
         fetch('http://localhost:3000/api/cameras/order', options)
         .then(res => {
-            console.log(res);
+            
             return res.json()})
         .then(res => { 
           if (res.orderId) {
@@ -100,7 +99,7 @@ function Valid () {
         
   }
     else {
-        console.log("ho");
+        
         alert("Veuillez remplir le formulaire");
     }
 }
@@ -116,14 +115,14 @@ function CalculTotal() {
     }
     document.getElementById("Total").innerHTML = ''; 
     document.getElementById("Total").innerHTML = `${priceT} €`
-    console.log(priceT);
+    
 }
 
 function AjoutProduit(index, valueQ) {
-    console.log(index);
+    
     objJson[index].quantity = valueQ;
     objJson[index].priceTotal = objJson[index].quantity*objJson[index].price;
-    console.log(objJson[index].quantity, objJson[index].price)
+    
     document.getElementById(`priceTotal-${index}`).innerHTML = `${objJson[index].priceTotal} € `;
     localStorage.setItem("products", JSON.stringify(objJson));
     CalculTotal();

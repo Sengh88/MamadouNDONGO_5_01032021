@@ -62,7 +62,7 @@ function addProduct (data) {
     quantity: 1,
     
  }
- console.log(product);
+ 
  panierBtn.addEventListener('click', function (e) {
    e.preventDefault();
   

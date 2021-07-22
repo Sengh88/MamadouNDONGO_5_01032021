@@ -18,7 +18,7 @@ const fetchOne = async () => {
       const response = await data.json()
       const{ name ,description,imageUrl,price, lenses ,_id } = response
       
-      outerLoader.style.display = "none"
+      outerLoader.style.display = "none" 
       cardHolder.innerHTML =`
       <article class="card">
           <div class="card__img">

@@ -347,6 +347,10 @@
     text-transform: uppercase;
     margin-top: 3rem;
   }
+
+ #btn-confirmation {
+   margin-top: 30rem;
+ }
   
 /* PANIER*/
 .panier-item__holder {

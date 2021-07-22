@@ -90,6 +90,7 @@ fetch("http://localhost:3000/api/cameras")
               <h3>${photo.name}</h3>
             </a>
             <div class="rating">
+            
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star"></i>
               <i class="bx bxs-star"></i>

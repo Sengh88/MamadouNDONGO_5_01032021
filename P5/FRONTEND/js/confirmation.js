@@ -1,17 +1,28 @@
-const order = JSON.parse(localStorage.getItem('order'))
+///// ///// ///// ///// PAGE CONFIRMATION ////// ///// ///// /////
 
-const outerLoader= document.querySelector('.loader__outer')
+// Confirmation de la commande
+function addConfirmationOrder() {
+    const orderId = localStorage.getItem("orderId");
+    const messageConfirmation = document.getElementById("orderId");
+    messageConfirmation.innerHTML = "Merci pour votre commande n° " + orderId;
+    const totalPrice = localStorage.getItem("totalOrder");
+    const confirmationPrice = document.getElementById("total-price");
+    confirmationPrice.innerHTML = "Prix total : " + totalPrice + " $";
+}
 
-const recapBtn = document.querySelector('.recap')
-const { products } = order
-const title = order.products.length == 1 ? 'VOTRE COMMANDE' : 'VOS COMMANDES'
 
-const rendeOrder = document.querySelector('.render__order')
-const orderId = document.querySelector(".order-id")
+// Vider le panier, le prix total et l'id de commande
+function resetOrder() {
+    buttonHome = document.getElementById('btn-confirmation');
+    buttonHome.addEventListener('click', function () {
+        localStorage.removeItem("orderConfirmationId");
+        localStorage.removeItem('basketContent');
+        localStorage.removeItem('totalOrder');
+        window.location.href = "../../index.html";
+    })
+}
 
 
-outerLoader.style.visibility = "visible"
-// injection HTML
-orderId.innerHTML= `NUMERO DE COMMANDE : ${order.orderId}`
-outerLoader.remove()
-
+////////////////////////////////////APPEL DES FONCTIONS/////////////////////////////////////////////////
+addConfirmationOrder()
+resetOrder()

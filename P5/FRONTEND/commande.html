@@ -70,21 +70,18 @@
       </div>
     </nav>
 
-    <main class="main">
-      <div class="loader__outer">
-        <div class="loader__inner"></div>
-    </div>
-      <h1>ORINOCO vous <span class="confirm">remercie pour</span> votre confiance</h1>
-      <p class="order-id"></p>
-      <section class="render__order">
-      </section>
-      <section class="price__holder"></section>
-      <section>
-        <br>
-        <button class="recap">TELECHARGER VOTRE RECAPITULATIF</button>
-        <h2><a href="./product-details.html">CONTINUEZ VOS ACHATS <i Class="fas fa-arrow-right"></i></a></h2>
-      </section>
-    </main>
+    <main class="container" id="main-confirm">
+      <!--Message de remerciement avec ID de commande et prix total-->
+      <!--Complèter la partie ID et total-price avec le JS-->
+      <div class="border border-warning rounded shadow-lg my-5 py-2 text-center">
+          <p id="orderId"></p>
+          <p id="total-price"></p>
+          <p><span class="title-product"> A bientôt chez Orinoco !</span> </p>
+          <!--Bouton de retour à la page d'accueil-->
+          <button class="btn btn-warning" id="btn-confirmation">Retour à la page d'accueil</button>
+      </div>
+
+  </main>
 
   <!-- Footer -->
   <footer id="footer" class="section footer">

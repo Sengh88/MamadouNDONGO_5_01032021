@@ -112,6 +112,7 @@ function CalculTotal() {
     for (let i = 0; i < priceJson.length; i++) 
     {
         priceT = priceT + priceJson[i].priceTotal; 
+        localStorage.setItem("totalOrder", JSON.stringify(priceT));
     }
     document.getElementById("Total").innerHTML = ''; 
     document.getElementById("Total").innerHTML = `${priceT} €`

@@ -26,7 +26,7 @@ const fetchOne = async () => {
           </div>
           <div class="card__info">
                <h3>${name}</h3>
-              <p>Prix <strong>${price / 100}$</strong> </p>
+              <p>Prix <strong>${price / 100}€</strong> </p>
               
           </div>
           <div>

@@ -98,7 +98,7 @@ fetch("http://localhost:3000/api/cameras")
               <i class="bx bx-star"></i>
               
             </div>
-            <h4 class="price">${photo.price / 100}</h4>
+            <h4 class="price">${photo.price / 100} €</h4>
             <a href="product-details.html?id=${photo._id}" class="btn-details">Détails du produit</a>
           </div>
           

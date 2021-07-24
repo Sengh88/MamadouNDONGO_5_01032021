@@ -38,7 +38,7 @@ else {
         tr.appendChild($th1); 
         //affichage du prix unitaire 
         const $th2 = document.createElement("th"); 
-        $th2.innerHTML = objJson[i].price/100;
+        $th2.innerHTML = `${objJson[i].price/100} €` ;
         tr.appendChild($th2);
         // Affichage du prix total. 
         const $th3 = document.createElement("th");
